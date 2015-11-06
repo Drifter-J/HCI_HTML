@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>    
+  <head> 
+    <title>ToDoMindMap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/js-mindmap.css" />
+    <link href="css/index.css" type="text/css" rel="stylesheet"/>    
+  </head>
+  <body> 
+    <!-- screenshot -->    
+    <!-- login -->
+    <div id="backgroundBlur">
+      <div id="loginBox">
+        <div id="loginBoxHead">
+          <img id="loginBoxLogo" src="media/logo.png" alt="logo" />
+          <div id="loginBoxDescription">Login</div>
+        </div>
+        <div id="loginBoxBody">
+          <input type="text" id="loginBoxID" placeholder="ID">
+          <input type="password" id="loginBoxPW" placeholder="Password">
+          <button id="loginBoxEnter"></button>
+          <div id="loginBoxKeepLogin">
+            <div id="loginBoxKeepLoginCheckBox">
+              <div id="loginBoxKeepLoginCheckImg" class="loginCheckImgUnchecked"></div>
+            </div>
+            <div id="loginBoxKeepLoginDesc">Auto login</div>
+          </div>            
+        </div>
+      </div>
+    </div>
+    <!-- menu on the left -->
+    <img src = "media/logo.png" style= "position: absolute; top: 10px; left:5px;z-index: 9990;" width="70" height="70">
+    <button id= "clickMe" onclick="function()"><img src="media/AddNodeIcon.png" width="50" height="50"></button> 
+    <button id= "clickMe2" onclick="click2()"><img src="media/DeleteNodeIcon.png" width="50" height="50"></button> 
+    <button id= "clickMe3" onclick="exportAndView()"><img src="media/SaveIcon.png" width="50" height="50"></button> 
+    <!-- mindmap elements -->
+    <h1>10/25</h1>
+    <h2>진선</h2>
+    <h3>커피 한잔</h3>
+    <h3>게임제작모임</h3>
+    <h3>생일</h3>
+    <h2>경미</h2>
+    <h3>시타델제작모임</h3>
+    <h2>주연</h2>
+    <h3>HCI모임</h3>
+    <h2>여가</h2>
+    <h3>라오어깨기</h3>
+    <h3>만화정주행</h3>
+    <h2>취준</h2>
+    <h3>면접10/31</h3>
+    <h3>라인시험</h3> 
+    <!-- input -->
+    <input type="text" class="form-control" id="inputQ1" placeholder="e.g How was our service?"/>
+    <!-- colorpicker element -->
+    <div class="colorpicker" style="display:none">
+     <canvas id="picker" style ="border: 2px solid #292929"width="50" height="50"></canvas>  
+    </div>
+    <!-- footer -->
+    <div id="footer">
+      <box>
+        <h4 style="color:#ffffff; text-align:right;">© 2015 변혜미, HCI, 고려대학교, All Rights Reserved.</h4> 
+      </box>  
+    </div> 
+  </body>
+</html>
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<!-- UI, for draggable nodes -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
+<!-- Raphael for SVG support (won't work on android) -->
+<script type="text/javascript" src="js/raphael-min.js"></script>
+<!-- Mindmap -->
+<script type="text/javascript" src="js/js-mindmap.js"></script>
+<!-- Kick everything off -->
+<script src="js/script.js" type="text/javascript"></script>
+<!-- login -->
+<script src="js/index.js" type="text/javascript"></script>
+<script src="http://code.createjs.com/easeljs-0.5.0.min.js"></script> 
+<script>
+  init();
+</script>
+<script>  
+  document.getElementById('clickMe').onclick = click;
+</script>

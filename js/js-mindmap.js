@@ -1,4 +1,5 @@
 var textInNode;
+var inputNodeIndex = 0;
 //button1 click js
 var click = function (){
   var node = document.getElementsByClassName("node ui-draggable")[3];
@@ -11,34 +12,30 @@ var click = function (){
       document.body.appendChild(node_prime);
   }
 };
-//button2 click js
+//button2(delete) click js
 function click2(){
   //previously clicked node is deleted if confirm.
   var result = confirm('Are you sure you want to delete '+textInNode+'?');
   if(result){
-  	for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+  	/*for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
   		if(document.getElementsByClassName("node ui-draggable")[i].innerHTML == textInNode){
 	 	 	var nodeIndex = document.getElementsByClassName("node ui-draggable")[i];
  			break;
  		}
- 	  } 	
+ 	  }*/
+      var nodeIndex = document.getElementsByClassName("node ui-draggable active")[0]; 	
  	nodeIndex.remove();   
  	}
 };
-//button3 click js
+//button4(cross out) click js
 function click3(){
   //previously clicked node is deleted if confirm.
-  var result = confirm('Are you sure you want to delete '+textInNode+'?');
+  var result = confirm('Are you sure you want to cross out '+textInNode+'?');
   if(result){
-  	for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
-  		if(document.getElementsByClassName("node ui-draggable")[i].innerHTML == textInNode){
-	 	 	var nodeIndex = document.getElementsByClassName("node ui-draggable")[i];
- 			break;
- 		}
- 	  } 	
- 	nodeIndex.remove();   
+        
  	}
 };
+
 //mind map js
 (function($){   
 
@@ -108,18 +105,37 @@ function click3(){
             //change the color
             $('.colorpicker').fadeToggle("slow", "linear");
             bCanPreview = true;
-            
-            //get user input and edit the innerHTML
-            var userInput = prompt("Please enter text", "");   
 
-            if (userInput != null) {
-                for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+            //get user input and edit the innerHTML
+            //var userInput = prompt("Please enter text", "");   
+            var inputText;
+            var inputTextInnerHTML;
+            for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+                try{
                     if(document.getElementsByClassName("node ui-draggable")[i].innerHTML == thisnode.name){
-                        document.getElementsByClassName("node ui-draggable")[i].innerHTML = userInput;
-                        thisnode.name = userInput;
+                        inputText = document.getElementsByClassName("node ui-draggable")[i];
+                        inputTextInnerHTML = inputText.innerHTML;
+                        inputText.innerHTML = "";        
+                        $('<textarea id="inputNode'+i+'" class="inputNode" value=""/>').appendTo(inputText);
+                        document.getElementById('inputNode'+i+'').placeholder=inputTextInnerHTML;
+                        document.getElementById('inputNode'+i+'').style.width = ((document.getElementById('inputNode'+i+'').placeholder.length+1)*13) + 'px';
+                    }
+                }catch (exception){
+                    if(document.getElementsByClassName("node ui-draggable active")[0].innerHTML == thisnode.name){
+                        inputText = document.getElementsByClassName("node ui-draggable active")[0];
+                        inputTextInnerHTML = inputText.innerHTML;
+                        inputText.innerHTML = "";      
+                        $('<textarea id="inputNode'+i+'" class="inputNode" value=""/>').appendTo(inputText);
+                        document.getElementById('inputNode'+i+'').placeholder=inputTextInnerHTML;
+                        document.getElementById('inputNode'+i+'').style.width = ((document.getElementById('inputNode'+i+'').placeholder.length+1)*13) + 'px';
                     }
                 }
-            }  
+            }
+
+          $('.inputNode').on("input", function() {
+            this.style.width = ((this.value.length + 1) * 8) + 'px';
+          });
+            //	}  
         });
 
         var bCanPreview = true; // can preview

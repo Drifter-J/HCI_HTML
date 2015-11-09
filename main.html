@@ -37,11 +37,11 @@
         $('#clickMe3').powerTip({ 
           placement: 'w',
           smartPlacement: true });
-        $('#Memo').powerTip({ 
+        $('.Memo').powerTip({ 
           placement: 'e',
           smartPlacement: true });
       });
-    </script> 
+    </script>     
   </head>
   <body> 
     <!-- screenshot -->    
@@ -70,29 +70,39 @@
     <button id= "clickMe" onclick="function()" title="Add Node"><img src="media/AddNodeIcon.png" width="60" height="60"></button> 
     <button id= "clickMe2" onclick="click2()" title="Delete Node"><img src="media/DeleteNodeIcon.png" width="60" height="60"></button> 
     <button id= "clickMe4" onclick="click3()" title="Cross Out Node"><img src="media/CrossNodeIcon.png" width="60" height="60"></button> 
-    <button id= "clickMe3" onclick="exportAndView()" title="Save"><img src="media/SaveIcon.png" width="60" height="60"></button> 
-    <!-- mindmap elements -->
-    <h1>To Do List</h1>
-    <h2>진선</h2>
-    <h3>게임제작모임</h3>
-    <p id= "Memo" title="Memo">일단 일러스트받고 3d modelling</p>
-    <h2>경미</h2>
-    <h3>시타델제작모임</h3>
-    <h2>주연</h2>
-    <h3>HCI모임</h3>
-    <h2>여가</h2>
-    <h3>라오어깨기</h3>
-    <h3>언차티드깨기</h3>
-    <h3>GTA깨기</h3>
-    <h2>시험</h2>
-    <h3>NC_11/14</h3> 
-    <h3>미적_11/14</h3>
-    <!-- input -->
-    <input type="text" class="form-control" id="inputQ1" placeholder="e.g How was our service?"/>
+    <button id= "clickMe3" onclick="exportAndView()" title="Save"><img src="media/SaveIcon.png" width="60" height="60"></button> '
     <!-- colorpicker element -->
     <div class="colorpicker" style="display:none">
      <canvas id="picker" style ="border: 2px solid #292929"width="50" height="50"></canvas>  
     </div>
+    <!-- mindmap elements -->
+    <h1>To Do List</h1>
+    <h2>진선</h2>
+    <p class= "Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>게임제작모임</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h2>경미</h2>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>시타델제작모임</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h2>주연</h2>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>HCI모임</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h2>여가</h2>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>라오어깨기</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>언차티드깨기</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>GTA깨기</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h2>시험</h2>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>NC_11/14</h3> 
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>
+    <h3>미적_11/14</h3>
+    <p class="Memo" onclick="clickMemo(this)" title="Memo"></p>    
     <!-- footer -->
     <div id="footer">
       <box>
@@ -105,25 +115,25 @@
   init();
 </script>
 <script type="text/javascript">  
-  document.getElementById('clickMe').onclick = click;
+  document.getElementById('clickMe').onclick = click;  
 </script>
-<script type="text/javascript">
-  function listen(evnt, elem, func) {
-      if (elem.addEventListener)  // W3C DOM
-          elem.addEventListener(evnt,func,false);
-      else if (elem.attachEvent) { // IE DOM
-           var r = elem.attachEvent("on"+evnt, func);
-           return r;
-      }
+<script>
+var inputText;
+var inputTextInnerHTML;
+function clickMemo(elem){
+    for(var i=0; i<document.getElementsByClassName("Memo").length+1; i++){    
+      if(document.getElementsByClassName("Memo")[i].innerHTML == elem.innerHTML){
+          inputText = document.getElementsByClassName("Memo")[i];
+          inputTextInnerHTML = inputText.innerHTML;    
+          if(inputText.innerHTML.charAt(0)!="<"){
+            inputText.innerHTML = "";    
+            $('<textarea id="Memo'+i+'" class="inputMemo"/>').appendTo(inputText);
+            document.getElementById('Memo'+i+'').placeholder=inputTextInnerHTML;
+        }
+        else {
+          break;
+        }
+      }      
   }
-
-  listen('click', p, function(ev){
-          CngMess(this, 'fred');
-    
-    
-  });
-
-  function CngMess(obj, id) {
-      document.getElementById(id).innerHTML = "guiltaihsd";
-  }
+};
 </script>

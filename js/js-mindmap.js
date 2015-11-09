@@ -1,6 +1,6 @@
+var textInNode;
 //button1 click js
 var click = function (){
-  var t;
   var node = document.getElementsByClassName("node ui-draggable")[3];
   productList = [''];
   productList.forEach(renderProductList);
@@ -13,9 +13,31 @@ var click = function (){
 };
 //button2 click js
 function click2(){
-  var nodeToDelete = document.getElementsByClassName("node ui-draggable");
-  var nodeIndex = nodeToDelete[nodeToDelete.length-1];
-  nodeIndex.remove(); 
+  //previously clicked node is deleted if confirm.
+  var result = confirm('Are you sure you want to delete '+textInNode+'?');
+  if(result){
+  	for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+  		if(document.getElementsByClassName("node ui-draggable")[i].innerHTML == textInNode){
+	 	 	var nodeIndex = document.getElementsByClassName("node ui-draggable")[i];
+ 			break;
+ 		}
+ 	  } 	
+ 	nodeIndex.remove();   
+ 	}
+};
+//button3 click js
+function click3(){
+  //previously clicked node is deleted if confirm.
+  var result = confirm('Are you sure you want to delete '+textInNode+'?');
+  if(result){
+  	for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+  		if(document.getElementsByClassName("node ui-draggable")[i].innerHTML == textInNode){
+	 	 	var nodeIndex = document.getElementsByClassName("node ui-draggable")[i];
+ 			break;
+ 		}
+ 	  } 	
+ 	nodeIndex.remove();   
+ 	}
 };
 //mind map js
 (function($){   
@@ -70,6 +92,8 @@ function click2(){
         });
 
         this.el.click(function(){
+        	textInNode = $(this).text();
+        	
             temp = 0;
             
             if (obj.activeNode) {

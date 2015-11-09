@@ -6,6 +6,42 @@
     <!-- css -->
     <link rel="stylesheet" type="text/css" href="css/js-mindmap.css" />
     <link href="css/index.css" type="text/css" rel="stylesheet"/>    
+    <link rel="stylesheet" type="text/css" href="css/jquery.powertip.css" />
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <!-- UI, for draggable nodes -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <!-- Raphael for SVG support (won't work on android) -->
+    <script type="text/javascript" src="js/raphael-min.js"></script>
+    <!-- Mindmap -->
+    <script type="text/javascript" src="js/js-mindmap.js"></script>
+    <!-- Kick everything off -->
+    <script src="js/script.js" type="text/javascript"></script>
+    <!-- login -->
+    <script src="js/index.js" type="text/javascript"></script>
+    <script src="http://code.createjs.com/easeljs-0.5.0.min.js"></script>     
+    <!-- tool tips -->
+    <script type="text/javascript" src="js/jquery.powertip.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        // placement examples
+        $('#clickMe').powerTip({ 
+          placement: 'w',
+          smartPlacement: true });
+        $('#clickMe2').powerTip({ 
+          placement: 'w',
+          smartPlacement: true });
+        $('#clickMe4').powerTip({ 
+          placement: 'w',
+          smartPlacement: true });
+        $('#clickMe3').powerTip({ 
+          placement: 'w',
+          smartPlacement: true });
+        $('#Memo').powerTip({ 
+          placement: 'e',
+          smartPlacement: true });
+      });
+    </script> 
   </head>
   <body> 
     <!-- screenshot -->    
@@ -31,25 +67,26 @@
     </div>
     <!-- menu on the left -->
     <img src = "media/logo.png" style= "position: absolute; top: 10px; left:5px;z-index: 9990;" width="70" height="70">
-    <button id= "clickMe" onclick="function()"><img src="media/AddNodeIcon.png" width="50" height="50"></button> 
-    <button id= "clickMe2" onclick="click2()"><img src="media/DeleteNodeIcon.png" width="50" height="50"></button> 
-    <button id= "clickMe3" onclick="exportAndView()"><img src="media/SaveIcon.png" width="50" height="50"></button> 
+    <button id= "clickMe" onclick="function()" title="Add Node"><img src="media/AddNodeIcon.png" width="60" height="60"></button> 
+    <button id= "clickMe2" onclick="click2()" title="Delete Node"><img src="media/DeleteNodeIcon.png" width="60" height="60"></button> 
+    <button id= "clickMe4" onclick="click3()" title="Cross Out Node"><img src="media/CrossNodeIcon.png" width="60" height="60"></button> 
+    <button id= "clickMe3" onclick="exportAndView()" title="Save"><img src="media/SaveIcon.png" width="60" height="60"></button> 
     <!-- mindmap elements -->
-    <h1>10/25</h1>
+    <h1>To Do List</h1>
     <h2>진선</h2>
-    <h3>커피 한잔</h3>
     <h3>게임제작모임</h3>
-    <h3>생일</h3>
+    <p id= "Memo" title="Memo">일단 일러스트받고 3d modelling</p>
     <h2>경미</h2>
     <h3>시타델제작모임</h3>
     <h2>주연</h2>
     <h3>HCI모임</h3>
     <h2>여가</h2>
     <h3>라오어깨기</h3>
-    <h3>만화정주행</h3>
-    <h2>취준</h2>
-    <h3>면접10/31</h3>
-    <h3>라인시험</h3> 
+    <h3>언차티드깨기</h3>
+    <h3>GTA깨기</h3>
+    <h2>시험</h2>
+    <h3>NC_11/14</h3> 
+    <h3>미적_11/14</h3>
     <!-- input -->
     <input type="text" class="form-control" id="inputQ1" placeholder="e.g How was our service?"/>
     <!-- colorpicker element -->
@@ -64,22 +101,29 @@
     </div> 
   </body>
 </html>
-<!-- jQuery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<!-- UI, for draggable nodes -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
-<!-- Raphael for SVG support (won't work on android) -->
-<script type="text/javascript" src="js/raphael-min.js"></script>
-<!-- Mindmap -->
-<script type="text/javascript" src="js/js-mindmap.js"></script>
-<!-- Kick everything off -->
-<script src="js/script.js" type="text/javascript"></script>
-<!-- login -->
-<script src="js/index.js" type="text/javascript"></script>
-<script src="http://code.createjs.com/easeljs-0.5.0.min.js"></script> 
 <script>
   init();
 </script>
-<script>  
+<script type="text/javascript">  
   document.getElementById('clickMe').onclick = click;
+</script>
+<script type="text/javascript">
+  function listen(evnt, elem, func) {
+      if (elem.addEventListener)  // W3C DOM
+          elem.addEventListener(evnt,func,false);
+      else if (elem.attachEvent) { // IE DOM
+           var r = elem.attachEvent("on"+evnt, func);
+           return r;
+      }
+  }
+
+  listen('click', p, function(ev){
+          CngMess(this, 'fred');
+    
+    
+  });
+
+  function CngMess(obj, id) {
+      document.getElementById(id).innerHTML = "guiltaihsd";
+  }
 </script>

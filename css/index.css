@@ -53,7 +53,7 @@ body #js-mindmap a.home {
     width:auto;
 }
 p,
-ul {
+ul {   
     display:block;
     font-family:gotham, tahoma;
     font-weight:normal;
@@ -70,9 +70,9 @@ a {
 .js-mindmap-active ul {
     margin-left:70%;
     width:20%;
-    color:#EE1C25;
-    background:rgb(255,255,255);
-    background:rgba(255,255,255,0.8);
+    color:#FFF;
+    background:rgb(255, 216, 0);
+    background:rgba(255, 216, 0, 0.8);
     border-radius:1em;
 }
 .js-mindmap-active ul li {
@@ -146,7 +146,7 @@ background : none;
 position: absolute;
 top:170px;
 }
- #clickMe3 {
+ #clickMe4 {
 z-index: 9990;
 border: none;
 background : none;
@@ -154,6 +154,13 @@ position: absolute;
 top:240px;
 }
 
+ #clickMe3 {
+z-index: 9990;
+border: none;
+background : none;
+position: absolute;
+top:310px;
+}
 #backgroundBlur{
     position: absolute; 
     width: 100%;
@@ -256,4 +263,15 @@ top:240px;
     text-align: center;
     text-transform: uppercase;
     width: 75px;
+}
+#placement-examples div {
+    text-align: center;
+}
+#placement-examples input {
+    background-color: #EEE;
+    margin: 10px;
+    padding: 10px 30px;
+}
+#placement-examples #east {
+    margin-left: 200px;
 }

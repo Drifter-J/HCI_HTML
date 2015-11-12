@@ -11,7 +11,7 @@
   position:absolute;
   top:0;
   left:0;
-  font-family:verdana;
+  font-family: '맑은 고딕', Arial, sans-serif;
   font-size:11px;
   color:#003258;
    opacity:0.9;
@@ -24,7 +24,7 @@
 }
 /*font*/
 .js-mindmap-active a.node {
-  font: 30px/34px Arial, sans-serif;
+  font-family: '맑은 고딕', Arial, sans-serif;
   font-size:1em;
   letter-spacing: 0;
   display:block;

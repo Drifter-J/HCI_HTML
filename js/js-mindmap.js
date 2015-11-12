@@ -14,6 +14,7 @@ var click = function (){
 };
 //button2(delete) click js
 function click2(){
+  var nodeIndex = document.getElementsByClassName("node ui-draggable active")[0]; 
   //previously clicked node is deleted if confirm.
   var result = confirm('Are you sure you want to delete '+textInNode+'?');
   if(result){
@@ -22,18 +23,24 @@ function click2(){
 	 	 	var nodeIndex = document.getElementsByClassName("node ui-draggable")[i];
  			break;
  		}
- 	  }*/
-      var nodeIndex = document.getElementsByClassName("node ui-draggable active")[0]; 	
+ 	  }*/	
  	nodeIndex.remove();   
- 	}
+  }
 };
 //button4(cross out) click js
 function click3(){
+  var nodeIndex = document.getElementsByClassName("node ui-draggable active")[0]; 
   //previously clicked node is deleted if confirm.
   var result = confirm('Are you sure you want to cross out '+textInNode+'?');
   if(result){
-        
- 	}
+    //xalert(nodeIndex.style.backgroundImage);
+    //nodeIndex.style.backgroundColor = "rgba(0,0,0,0.1)";
+    //"url('../media/CrossOut.png')";
+    nodeIndex.style.backgroundImage = "url('media/Check.png')";
+    for(var i=0; i<document.getElementsByClassName("node ui-draggable").length+1; i++){
+
+    }
+  }
 };
 
 //mind map js
@@ -117,7 +124,7 @@ function click3(){
                         inputTextInnerHTML = inputText.innerHTML;
                         inputText.innerHTML = "";        
                         $('<textarea id="inputNode'+i+'" class="inputNode" value=""/>').appendTo(inputText);
-                        document.getElementById('inputNode'+i+'').placeholder=inputTextInnerHTML;
+                        document.getElementById('inputNode'+i+'').placeholder='   '+inputTextInnerHTML;
                         document.getElementById('inputNode'+i+'').style.width = ((document.getElementById('inputNode'+i+'').placeholder.length+1)*13) + 'px';
                     }
                 }catch (exception){
@@ -126,7 +133,7 @@ function click3(){
                         inputTextInnerHTML = inputText.innerHTML;
                         inputText.innerHTML = "";      
                         $('<textarea id="inputNode'+i+'" class="inputNode" value=""/>').appendTo(inputText);
-                        document.getElementById('inputNode'+i+'').placeholder=inputTextInnerHTML;
+                        document.getElementById('inputNode'+i+'').placeholder='   '+inputTextInnerHTML;
                         document.getElementById('inputNode'+i+'').style.width = ((document.getElementById('inputNode'+i+'').placeholder.length+1)*13) + 'px';
                     }
                 }

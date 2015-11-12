@@ -6,9 +6,10 @@ html{
     padding: 0;
     font-size: 9pt;
 }
+
 body {	
 	background-image: url("../media/getGrid.png");
-    font-family: helvetica, arial, sans-serif;
+  font-family: '맑은 고딕', Arial, sans-serif;
     margin: 0;
     padding: 0;
     width:100%;
@@ -39,7 +40,9 @@ h3 {
     font-size:2em;
 }
 .js-mindmap-active a.node {
-  background:#282828;
+  background:#282828;  
+  background-size: 40px;
+  background-repeat: no-repeat;
   border: 2px solid #B1B1B1; 
   border-radius: 20px;
 }
@@ -62,9 +65,6 @@ ul {
 }
 ul {
     margin:0 1em;
-}
-a {
-    color:white;
 }
 .js-mindmap-active p,
 .js-mindmap-active ul {
@@ -102,16 +102,19 @@ input[type="button"]::-moz-focus-inner {
 }
 
 .inputMemo {
-background-color: rgba(0,0,0,0);
-color: #292929;
-border: none;
-width: 20%;
+    background-color: rgba(0,0,0,0);
+    color: #292929;
+    border: none;
 }
-
+textarea {
+    font-size: 14px;
+    font-family: '맑은 고딕', Arial, sans-serif;
+    max-width: 100%;     
+}
 .inputNode {
-background-color: rgba(0,0,0,0);
-color: white;
-border: none;
+    background-color: rgba(0,0,0,0);
+    color: white;
+    border: none;
 }
 
 button {
